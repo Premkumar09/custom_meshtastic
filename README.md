@@ -272,6 +272,22 @@ build_flags =
 
 *Note: Due to file sizing optimizations, make sure `huge_app.csv` is mirrored into your local layout from your local `.platformio/packages/framework-arduinoespressif32/tools/partitions/` directory structure.*
 
+
+ESP32 WROOM-32                   DX-LR30 LoRa Module
++----------------+                +-------------------+
+|    [3.3V]      | -------------> |     [ VCC ]       |  (3.3V Only!)
+|    [GND]       | -------------> |     [ GND ]       |  (Common Ground)
+|                |                |                   |
+|  SCK  [GPIO  5]| -------------> |     [ SCK ]       |  (SPI Clock)
+|  MISO [GPIO 19]| -------------> |     [ MISO]       |  (SPI Data Out from Radio)
+|  MOSI [GPIO 27]| -------------> |     [ MOSI]       |  (SPI Data In to Radio)
+|                |                |                   |
+|  CS   [GPIO 18]| -------------> |     [ NSS ]       |  (Radio Chip Select)
+|  RST  [GPIO 14]| -------------> |     [ RST ]       |  (Hardware Reset)
+|  DIO1 [GPIO 26]| -------------> |     [ DIO1]       |  (IRQ Interrupt)
+|  BUSY [GPIO 32]| -------------> |     [ BUSY]       |  (Mandatory Status Pin)
++----------------+                +-------------------+
+
 ---
 
 ## 🩺 Diagnostic Traces & Verification
