@@ -324,3 +324,53 @@ Connect your Meshtastic mobile application via the **Manual** node sync tab. Tra
 
 ```
 
+
+# Custom Firmware Reference: dxlr30-c3mini
+
+This environment profiles the compilation, flashing, and deployment architecture for a headless, ultra-lean **Meshtastic Router Node** utilizing a **V1601 revision ESP32-C3 Super Mini** combined with a **DX-LR30 (SX1262)** LoRa transceiver core.
+
+---
+
+## 🛠️ Hardware Interconnect Mapping
+
+The V1601 board utilizes its native single-channel RISC-V hardware SPI bus boundaries matched to the control line configuration below.
+
+> ⚠️ **CRITICAL POWER LAYER REMINDER:** Connect the DX-LR30 transceiver board rail exclusively to the Super Mini's **3.3V** pin. Utilizing the raw 5V VBUS line will permanently destroy the Semtech transceiver core.
+> 
+> 📡 **ANTENNA WARNING:** Always connect your antenna to the ANT terminal **BEFORE** powering on the board to prevent burning out the radio's power amplifier (PA).
+
+```text
+ESP32-C3 Super Mini    DX-LR30 (SX1262)
+─────────────────────────────────────────
+3.3V              →    VCC (3.3V Max!)
+GND               →    GND (Common Ground)
+GPIO4             →    SCK  (Hardware SPI Clock)
+GPIO5             →    MISO (Hardware SPI MISO)
+GPIO6             →    MOSI (Hardware SPI MOSI)
+GPIO7             →    NSS  (Radio Chip Select)
+GPIO3             →    DIO1 (Radio IRQ Interrupt)
+GPIO2             →    BUSY (Radio Busy Status)
+GPIO10            →    NRST (Hardware Reset)
+─                 →    ANT  (Connect Antenna First!)
+
+
+### 1. Build and Compile the Firmware Image
+
+Compiles the targeted binary tree inside a secure Docker runtime wrapper environment, outputting finalized compilation objects natively to `~git/firmware/latest/dxlr30-c3mini/latest.bin`.
+
+```bash
+sh build.sh dxlr30-c3mini
+
+
+### 2. Flash and Deploy to Connected Devices
+Flashing actions map to internal target frameworks. Use the hardware bus path tracking directly when utilizing native USB-CDC mapping targets.
+
+```bash
+sh flash.sh dxlr30-c3mini /dev/ttyACM0
+
+### Automated Port Discovery Fallback Wrapper
+
+```bash
+sh flash.sh dxlr30-c3mini
+
+
