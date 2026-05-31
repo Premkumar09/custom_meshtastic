@@ -1,8 +1,3 @@
-I apologize for that glitch! Here is the clean Markdown content for your **`README.md`**.
-
-You can simply copy the code block below and save it as a file named `README.md` directly inside your `~/git/custom_meshtastic/` folder:
-
-```markdown
 # Meshtastic Automation Toolset & Workspace Documentation
 
 This comprehensive repository serves as a consolidated workspace for building, flashing, monitoring, and managing custom **Meshtastic** node deployments. It links your automation wrappers (`custom_meshtastic/`) directly with the underlying firmware code boundaries (`firmware/`).
@@ -313,4 +308,3 @@ Connect your Meshtastic mobile application via the **Manual** node sync tab. Tra
 
 ```
 
-```
