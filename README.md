@@ -272,7 +272,7 @@ build_flags =
 
 *Note: Due to file sizing optimizations, make sure `huge_app.csv` is mirrored into your local layout from your local `.platformio/packages/framework-arduinoespressif32/tools/partitions/` directory structure.*
 
-
+```text
 ESP32 WROOM-32                   DX-LR30 LoRa Module
 +----------------+                +-------------------+
 |    [3.3V]      | -------------> |     [ VCC ]       |  (3.3V Only!)
@@ -287,7 +287,7 @@ ESP32 WROOM-32                   DX-LR30 LoRa Module
 |  DIO1 [GPIO 26]| -------------> |     [ DIO1]       |  (IRQ Interrupt)
 |  BUSY [GPIO 32]| -------------> |     [ BUSY]       |  (Mandatory Status Pin)
 +----------------+                +-------------------+
-
+```
 ---
 
 ## 🩺 Diagnostic Traces & Verification
