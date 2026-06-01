@@ -1,7 +1,4 @@
-```python
-import os
-
-markdown_content = """# Meshtastic Firmware Build, Flash, and Monitor Toolset
+# Meshtastic Firmware Build, Flash, and Monitor Toolset
 
 This guide explains how to set up, configure, and execute the generalized automation scripts for compiling, flashing, and monitoring custom Meshtastic firmware environments.
 
